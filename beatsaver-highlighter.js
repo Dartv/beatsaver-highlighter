@@ -59,24 +59,6 @@
     nodes.forEach(highlight);
   };
 
-  const prependOneClickInstall = (node) => {
-    const container = node.querySelector('.right');
-    const buttons = container.querySelector('a');
-    const button = document.createElement('a');
-    button.href = `beatsaver://${node.id}`;
-    button.innerText = 'OneClick™ Install';
-    const buttonContainer = document.createElement('div');
-    buttonContainer.style = 'display: flex;';
-    Array.from(buttons).forEach(child => container.removeChild(child));
-    Array.from([button, buttons]).forEach((node, index, arr) => {
-      if (index < arr.length - 1) {
-        node.style = 'margin-right: 0';
-      }
-      buttonContainer.appendChild(node);
-    });
-    container.appendChild(buttonContainer);
-  };
-
   const onBlur = (e) => {
     const { name, value } = e.target;
   
@@ -121,7 +103,6 @@
         if (type === 'attributes') {
           if (oldValue === 'beatmap-result-hidden') {
             highlight(target);
-            prependOneClickInstall(target);
           }
         }
       });
